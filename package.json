@@ -1,0 +1,35 @@
+{
+  "name": "nexton-admissions-typeform",
+  "version": "1.0.0",
+  "description": "nexton admissions test exam",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/main.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gtricerriv/nexton-admissions-typeform.git"
+  },
+  "keywords": [],
+  "author": "gtricerriv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gtricerriv/nexton-admissions-typeform/issues"
+  },
+  "homepage": "https://github.com/gtricerriv/nexton-admissions-typeform#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/node": "^18.11.18",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
