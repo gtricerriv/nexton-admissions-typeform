@@ -19,11 +19,7 @@ If you are using npm scripts, you can add a script to your package.json file to 
 
 
 
-```{```
-```  "scripts": {```
-```    "build": "tsc"```
-```  }```
-```}```
+```{"scripts" : { "build" : "tsc" } }```
 You can then run the script with the following command:
 
 
