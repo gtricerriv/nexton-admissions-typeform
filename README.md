@@ -11,22 +11,23 @@ Once installed, you can start using TypeScript in your project by creating a tsc
 
 To compile your TypeScript files, you can use the following command:
 
-Copy code
-npm run build
+```npm run build```
+
 This will compile all TypeScript files in your project.
 
 If you are using npm scripts, you can add a script to your package.json file to compile your TypeScript files:
 
-Copy code
-{
-  "scripts": {
-    "build": "tsc"
-  }
-}
+
+
+```{```
+```  "scripts": {```
+```    "build": "tsc"```
+```  }```
+```}```
 You can then run the script with the following command:
 
-Copy code
-npm run dev
+
+```npm run dev```
 Additional Resources
 For more information on using TypeScript with npm, check out the TypeScript documentation.
 
