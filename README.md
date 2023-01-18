@@ -4,8 +4,7 @@ nexton admissions test exam
 Installation
 To install, simply run the following command in your project's root directory:
 
-Copy code
-npm install
+```npm install```
 Usage
 Once installed, you can start using TypeScript in your project by creating a tsconfig.json file in your project's root directory. This file will contain the configuration for your TypeScript compiler.
 
