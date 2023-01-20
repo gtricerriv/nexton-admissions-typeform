@@ -16,14 +16,13 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.json());
 
-app.post('/', (req: Request, res: Response) => {
+app.post('/beta', (req: Request, res: Response) => {
   let {
     formule
   } = req.body
   formule = formule.replaceAll(' ', '')
   let terms_math: Array < string > = ["(", ")", "*", "/", "+", "-"]
   let terms_match: Array < string > = []
-  let numbers: Array < Number > = []
   let result: any = {}
   let formule_temp = formule
   let extract_section = ""
@@ -39,15 +38,17 @@ app.post('/', (req: Request, res: Response) => {
   return res.send({
     result
   })
-
+  //confirm char is number
   function isNumber(n:any) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
+  //flip left operator select
   function flipText(text:string) {
     return text.split('').reverse().join('');
   }
 
+  //remove text from text main
   function removeText(text:string, remove:string) {
     var index = text.indexOf(remove);
     if (index !== -1) {
@@ -56,6 +57,7 @@ app.post('/', (req: Request, res: Response) => {
     return text;
   }
 
+  //order expresions
   function order_terms(index: any) {
     let index_temp_before:number = index - 1
     let index_temp_after:number = index + 1
@@ -65,7 +67,7 @@ app.post('/', (req: Request, res: Response) => {
     let condition_break:boolean = true
 
 
-    while(index_temp_before >= 0 && (isNumber(formule_temp[index_temp_before]) || formule_temp[index_temp_after] === ".") && condition_break){
+    while(index_temp_before >= 0 && (isNumber(formule_temp[index_temp_before]) || formule_temp[index_temp_before] === ".") && condition_break){
       number_before_term += formule_temp[index_temp_before]
       index_temp_before === 0 ? condition_break = false : condition_break = true
       --index_temp_before
@@ -73,9 +75,6 @@ app.post('/', (req: Request, res: Response) => {
 
     condition_break = true
     number_before_term =  flipText(number_before_term)
-
-    console.log(number_before_term, number_after_term, index, "empty")
-
 
     while(index_temp_after >= 0 && (isNumber(formule_temp[index_temp_after]) || formule_temp[index_temp_after] === ".") && condition_break){
       number_after_term += formule_temp[index_temp_after]
@@ -90,6 +89,7 @@ app.post('/', (req: Request, res: Response) => {
     }
   }
 
+  //result from expresion
   function exect_formule(term:string, first_number: string | number, second_number: string | number) {
     first_number = Number(first_number);
     second_number = Number(second_number);
@@ -122,7 +122,15 @@ app.post('/', (req: Request, res: Response) => {
   }
 });
 
+//main function
+app.post('/', (req: Request, res: Response)=>{
+  let text:string = req.body.formule;
+  let result:string = eval(text)
+  return res.send({result})
+})
 
+
+//listen port and init server
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
