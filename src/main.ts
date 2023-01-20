@@ -125,7 +125,7 @@ app.post('/beta', (req: Request, res: Response) => {
 //main function
 app.post('/', (req: Request, res: Response)=>{
   let text:string = req.body.formule;
-  let result:string = eval(text)
+  let result:string = eval(text) //function native in browser for operate expresions math
   return res.send({result})
 })
 
